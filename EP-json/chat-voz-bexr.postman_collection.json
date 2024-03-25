@@ -1,0 +1,353 @@
+{
+	"info": {
+		"_postman_id": "ad613d75-557c-4990-af36-a579081e97c8",
+		"name": "chat-voz-bexr",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32698487"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"example@example.com\",\r\n  \"password\": \"12345\",\r\n\r\n  \"name\": \"nombreEjemplo\",\r\n  \"lastname\": \"de ejemplo\",\r\n  \"phone\": \"+593999889\",\r\n  \"nickname\": \"12345\",\r\n  \"glb\": \"abcdefg1234567890\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri}}/api/auth/register",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"example@example.com\",\r\n  \"password\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri}}/api/auth/login",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "Get profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{uri}}/api/profiles",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"api",
+								"profiles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"nuevoNombre\",\r\n    \"lastname\": \"nuevoApellido\",\r\n    \"phone\": \"+593997237902\",\r\n    \"nickname\": \"nuevoNick\",\r\n    \"glb\": \"actualizado123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri}}/api/profiles",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"api",
+								"profiles"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Email",
+			"item": [
+				{
+					"name": "Send Email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"to\": \"destinatario@example.com\",\r\n    \"subject\": \"Email de prueba\",\r\n    \"html\": \"<p>Contenido HTML del correo electrónico</p>\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri}}/api/emails/send",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"api",
+								"emails",
+								"send"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Room",
+			"item": [
+				{
+					"name": "Create room",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"bbbbbbbbbbbbbbbbbbbb\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri}}/api/rooms",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"api",
+								"rooms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete room",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"nuevoNombre\",\r\n    \"lastname\": \"nuevoApellido\",\r\n    \"phone\": \"+593997237902\",\r\n    \"nickname\": \"nuevoNick\",\r\n    \"glb\": \"actualizado123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri}}/api/rooms/:id",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"api",
+								"rooms",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create subroom",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"nuevoNombre\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri}}/api/rooms/:id",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"api",
+								"rooms",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "65ff2b2396bd9a61063f4064"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete subroom",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"nuevoNombre\",\r\n    \"lastname\": \"nuevoApellido\",\r\n    \"phone\": \"+593997237902\",\r\n    \"nickname\": \"nuevoNick\",\r\n    \"glb\": \"actualizado123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uri}}/api/rooms/:id/:subRoomId",
+							"host": [
+								"{{uri}}"
+							],
+							"path": [
+								"api",
+								"rooms",
+								":id",
+								":subRoomId"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								},
+								{
+									"key": "subRoomId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
